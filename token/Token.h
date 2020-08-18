@@ -16,7 +16,7 @@ namespace Token {
     typedef string TokenType;
 
     const string ILLEGAL = "ILLEGAL";
-    const string EOF_ = "EOF";
+    const string EOF_ = "EOF_";
 
 // Identifiers + literals
     const string IDENT = "IDENT"; // add, foobar, x, y, ...
@@ -24,38 +24,38 @@ namespace Token {
     const string FLOAT = "FLOAT"; // 1.0, 1.343932
 
 // Operators
-    const string ASSIGN = "=";
-    const string PLUS = "+";
-    const string MINUS = "-";
-    const string BANG = "!";
-    const string ASTERISK = "*";
-    const string SLASH = "/";
-    const string PERCENT = "%";
+    const string ASSIGN = "ASSIGN";
+    const string PLUS = "PLUS";
+    const string MINUS = "MINUS";
+    const string BANG = "BANG";
+    const string ASTERISK = "ASTERISK";
+    const string SLASH = "SLASH";
+    const string PERCENT = "PERCENT";
 
-    const string IADD = "+=";
-    const string ISUB = "-=";
-    const string IMUL = "*=";
-    const string IDIV = "/=";
-    const string IMOD = "%=";
+    const string IADD = "IADD";
+    const string ISUB = "ISUB";
+    const string IMUL = "IMUL";
+    const string IDIV = "IDIV";
+    const string IMOD = "IMOD";
 
 
-    const string LT = "<";
-    const string LE = "<=";
-    const string GT = ">";
-    const string GE = ">=";
+    const string LT = "LT";
+    const string LE = "LE";
+    const string GT = "GT";
+    const string GE = "GE";
 
-    const string EQ = "==";
-    const string NOT_EQ = "!=";
+    const string EQ = "EQ";
+    const string NOT_EQ = "NOT_EQ";
 
 // Delimiters
-    const string COMMA = ",";
-    const string SEMICOLON = ";";
-    const string COLON = ":";
+    const string COMMA = "COMMA";
+    const string SEMICOLON = "SEMICOLON";
+    const string COLON = "COLON";
 
-    const string LPAREN = "(";
-    const string RPAREN = ")";
-    const string LBRACE = "{";
-    const string RBRACE = "}";
+    const string LPAREN = "LPAREN";
+    const string RPAREN = "RPAREN";
+    const string LBRACE = "LBRACE";
+    const string RBRACE = "RBRACE";
 
 // Keywords
     const string FUNCTION = "FUNCTION";
