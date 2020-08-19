@@ -10,71 +10,110 @@
 #include <string>
 #include <map>
 #include <iostream>
-using namespace std;
 
 namespace Token {
-    typedef string TokenType;
-
-    const string ILLEGAL = "ILLEGAL";
-    const string EOF_ = "EOF_";
+    enum TokenType {
+        ILLEGAL,
+        EOF_,
 
 // Identifiers + literals
-    const string IDENT = "IDENT"; // add, foobar, x, y, ...
-    const string INT = "INT";   // 1343456
-    const string FLOAT = "FLOAT"; // 1.0, 1.343932
+        IDENT,
+        INT,
+        FLOAT,
 
 // Operators
-    const string ASSIGN = "ASSIGN";
-    const string PLUS = "PLUS";
-    const string MINUS = "MINUS";
-    const string BANG = "BANG";
-    const string ASTERISK = "ASTERISK";
-    const string SLASH = "SLASH";
-    const string PERCENT = "PERCENT";
+        ASSIGN,
+        PLUS,
+        MINUS,
+        BANG,
+        ASTERISK,
+        SLASH,
+        PERCENT,
 
-    const string IADD = "IADD";
-    const string ISUB = "ISUB";
-    const string IMUL = "IMUL";
-    const string IDIV = "IDIV";
-    const string IMOD = "IMOD";
+        IADD,
+        ISUB,
+        IMUL,
+        IDIV,
+        IMOD,
 
+        LT,
+        LE,
+        GT,
+        GE,
 
-    const string LT = "LT";
-    const string LE = "LE";
-    const string GT = "GT";
-    const string GE = "GE";
-
-    const string EQ = "EQ";
-    const string NOT_EQ = "NOT_EQ";
+        EQ,
+        NOT_EQ,
 
 // Delimiters
-    const string COMMA = "COMMA";
-    const string SEMICOLON = "SEMICOLON";
-    const string COLON = "COLON";
+        COMMA,
+        SEMICOLON,
+        COLON,
 
-    const string LPAREN = "LPAREN";
-    const string RPAREN = "RPAREN";
-    const string LBRACE = "LBRACE";
-    const string RBRACE = "RBRACE";
+        LPAREN,
+        RPAREN,
+        LBRACE,
+        RBRACE,
 
 // Keywords
-    const string FUNCTION = "FUNCTION";
-    const string LET = "LET";
-    const string TRUE = "TRUE";
-    const string FALSE = "FALSE";
-    const string IF = "IF";
-    const string ELSE = "ELSE";
-    const string RETURN = "RETURN";
+        FUNCTION,
+        LET,
+        TRUE,
+        FALSE,
+        IF,
+        ELSE,
+        RETURN,
+    };
+
+    const std::map<TokenType, std::string> TYPESTRING{
+        {ILLEGAL, "ILLEGAL"},
+        {EOF_, "EOF"},
+        {IDENT, "IDENT"},
+        {INT, "INT"},
+        {FLOAT, "FLOAT"},
+        {ASSIGN, "ASSIGN"},
+        {PLUS, "PLUS"},
+        {MINUS, "MINUS"},
+        {BANG, "BANG"},
+        {ASTERISK, "ASTERISK"},
+        {SLASH, "SLASH"},
+        {PERCENT, "PERCENT"},
+        {IADD, "IADD"},
+        {ISUB, "ISUB"},
+        {IMUL, "IMUL"},
+        {IDIV, "IDIV"},
+        {IMOD, "IMOD"},
+        {LT, "LT"},
+        {LE, "LE"},
+        {GT, "GT"},
+        {GE, "GE"},
+        {EQ, "EQ"},
+        {NOT_EQ, "NOT_EQ"},
+        {COMMA, "COMMA"},
+        {SEMICOLON, "SEMICOLON"},
+        {COLON, "COLON"},
+        {LPAREN, "LPAREN"},
+        {RPAREN, "RPAREN"},
+        {LBRACE, "LBRACE"},
+        {RBRACE, "RBRACE"},
+        {FUNCTION, "FUNCTION"},
+        {LET, "LET"},
+        {TRUE, "TRUE"},
+        {FALSE, "FALSE"},
+        {IF, "IF"},
+        {ELSE, "ELSE"},
+        {RETURN, "RETURN"},
+    };
+
 
     struct Token {
         TokenType type;
-        string literal;
-        string ToString() const {
-            return "<" + type + ", " + literal + '>';
+        std::string literal;
+        std::string ToString() const {
+            return "<" + TYPESTRING.at(type) + ", " + literal + '>';
         }
     };
 
-    static Token GetToken(TokenType tt, string literal) {
+    static Token GetToken(TokenType tt, std::string literal) {
         Token token;
         token.type = tt;
         token.literal = literal;
@@ -86,7 +125,7 @@ namespace Token {
         return Ostream;
     };
 
-    const map<string, TokenType> keywords{
+    const std::map<std::string, TokenType> keywords{
             {"function",     FUNCTION},
             {"let",    LET},
             {"true",   TRUE},
@@ -96,14 +135,14 @@ namespace Token {
             {"return", RETURN},
     };
 
-    static TokenType LookUpIdent(string ident) {
+    static TokenType LookUpIdent(std::string ident) {
         if (keywords.find(ident) == keywords.end()) {
             return IDENT;
         }
         return keywords.at(ident);
     }
 
-    static TokenType LookUpNumberType(string number) {
+    static TokenType LookUpNumberType(std::string number) {
         for(char c : number) {
             if(c == '.') return FLOAT;
         }

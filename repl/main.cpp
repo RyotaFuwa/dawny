@@ -5,11 +5,11 @@
 #include <iostream>
 #include <Lexer.h>
 
-const string PROMPT = "Dawny >>";
+const std::string PROMPT = "Dawny >>";
 
 int main() {
     while(true) {
-        string line;
+        std::string line;
         std::cout << PROMPT;
         std::getline(std::cin, line);
         if(line == "exit") break;
