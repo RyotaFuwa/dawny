@@ -7,7 +7,10 @@
 #include "Node.h"
 
 
-class Statement : public Node {
+struct Statement : Node {
+    Statement();
+    std::string ToString() const override;
+    bool empty;
 };
 
 

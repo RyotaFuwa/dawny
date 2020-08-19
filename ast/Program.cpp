@@ -7,11 +7,13 @@
 Program::Program() {
 }
 
+/*
 std::string Program::GetLiteral() {
     return std::string();
 }
+*/
 
-std::string Program::ToString() {
+std::string Program::ToString() const {
     std::string out = "";
     for(const Statement& statement : statements) {
         out += statement.ToString() + "\n";

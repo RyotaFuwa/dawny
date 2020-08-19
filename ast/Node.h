@@ -7,9 +7,8 @@
 #include <string>
 
 
-class Node {
-public:
-    virtual std::string GetLiteral() = 0;
+struct Node {
+    // virtual std::string GetLiteral() = 0;
     virtual std::string ToString() const = 0;
 };
 

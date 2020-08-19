@@ -7,7 +7,7 @@
 #include "Statement.h"
 
 
-class Let : public Statement {
+struct Let : Statement {
 };
 
 

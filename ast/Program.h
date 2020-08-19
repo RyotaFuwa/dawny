@@ -10,13 +10,11 @@
 #include "Statement.h"
 
 
-class Program : public Node {
+struct Program : Node {
 public:
     Program();
-    std::string GetLiteral() override;
-    std::string ToString() override;
-
-private:
+//    std::string GetLiteral() override;
+    std::string ToString() const override;
     std::vector<Statement> statements;
 };
 

@@ -21,7 +21,7 @@ Lexer::Lexer::Lexer(string input) : codeText(input), position(0), nextPosition(1
 Lexer::Lexer::~Lexer() {
 }
 
-Token::Token Lexer::Lexer::GetNewToken() {
+Token::Token Lexer::Lexer::GetNextToken() {
     Token::Token token;
 
     SkipWhitespace();
@@ -231,7 +231,7 @@ std::vector<Token::Token> Lexer::Lexer::Parse() {
     std::vector<Token::Token> tokens;
     Reset();
     while(true) {
-        Token::Token token = GetNewToken();
+        Token::Token token = GetNextToken();
         tokens.push_back(token);
         if(token.type == Token::EOF_ || token.type == Token::ILLEGAL)
             break;

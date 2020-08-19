@@ -4,5 +4,3 @@
 
 #include "Parser.h"
 
-Parser::Parser(PARSER_TYPE pt) {
-}

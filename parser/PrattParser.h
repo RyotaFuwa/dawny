@@ -6,40 +6,43 @@
 #define DAWNY_PRATTPARSER_H
 #include <map>
 #include "Parser.h"
-
+#include "Expression.h"
 
 namespace Parser {
-    enum PRATT_RULE {
-        EQUAL,
-        COMPARE,
-        SUM,
-        PRODUCT,
-        PREFIX,
-        CALL,
-        FIELD,
-    };
 
-    const map<Token::TokenType, PRATT_RULE> PRATT_TOKEN_TO_RULE{
-            {Token::EQ, PRATT_RULE::EQUAL},
-            {Token::NOT_EQ, PRATT_RULE::EQUAL},
-
-            {Token::LT, PRATT_RULE::COMPARE},
-            {Token::LE, PRATT_RULE::COMPARE},
-            {Token::GT, PRATT_RULE::COMPARE},
-            {Token::GE, PRATT_RULE::COMPARE},
-
-            {Token::PLUS, PRATT_RULE::SUM},
-            {Token::MINUS, PRATT_RULE::SUM},
-            {Token::ASTERISK, PRATT_RULE::PRODUCT},
-            {Token::SLASH, PRATT_RULE::PRODUCT},
-            {Token::PERCENT, PRATT_RULE::PRODUCT},
-
-            {Token::LPAREN, PRATT_RULE::CALL}
-    };
     class PrattParser : public Parser {
     public:
+        PrattParser();
         Program Parse() override;
     private:
+        Token::Token GetNextToken();
+
+        //statement parse
+        Statement ParseStatement();
+        Statement ParseLet();
+
+        // prefix
+        typedef Expression PrefixFunction(void);
+        Expression ParsePrefix();
+        Expression ParseIdent();
+        Expression ParseInt();
+        Expression ParseBool();
+        Expression ParseGroup();
+        Expression ParseIfExpression();
+        Expression ParserFunction();
+
+        // infix
+        typedef Expression (*InfixFunction)(Expression&);
+        Expression ParseInfix();
+        Expression ParseCall();
+
+        std::vector<std::string> errors;
+
+        Token::Token currentToken;
+        Token::Token nextToken;
+
+        std::map<Token::TokenType, PrefixFunction> prefixFunctionMap;
+        std::map<Token::TokenType, InfixFunction> infixFunctionMap;
     };
 }
 

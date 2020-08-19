@@ -108,7 +108,7 @@ TEST(LexerTest, ReturnCorrectTokens
             Token::GetToken(Token::EOF_, ""),
     };
     for(auto correctToken : tokens) {
-        Token::Token token = lexer.GetNewToken();
+        Token::Token token = lexer.GetNextToken();
         EXPECT_EQ(token.type, correctToken.type);
         EXPECT_EQ(token.literal, correctToken.literal);
     }

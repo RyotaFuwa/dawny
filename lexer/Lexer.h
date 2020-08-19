@@ -18,7 +18,7 @@ namespace Lexer {
         ~Lexer();
         friend std::ostream& operator<<(std::ostream&, Lexer&);
 
-        Token::Token GetNewToken();
+        Token::Token GetNextToken();
         std::vector<Token::Token> Parse();
 
         static bool isLetter(char);
