@@ -11,9 +11,13 @@ add_executable(dawny ${SOURCE_FILES})
 # lexer, repl
 include_directories(token)
 include_directories(lexer)
+include_directories(ast)
+include_directories(parser)
 include_directories(repl)
 
 add_subdirectory(lexer)
+add_subdirectory(ast)
+add_subdirectory(parser)
 add_subdirectory(repl)
 
 # main link to library

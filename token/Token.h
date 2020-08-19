@@ -69,7 +69,11 @@ namespace Token {
     struct Token {
         TokenType type;
         string literal;
+        string ToString() const {
+            return "<" + type + ", " + literal + '>';
+        }
     };
+
     static Token GetToken(TokenType tt, string literal) {
         Token token;
         token.type = tt;
@@ -78,7 +82,7 @@ namespace Token {
     }
 
     static std::ostream& operator<<(std::ostream& Ostream, const Token& token) {
-        Ostream << "<" << token.type << ", " << token.literal << '>';
+        Ostream << token.ToString();
         return Ostream;
     };
 
