@@ -19,13 +19,13 @@ namespace Lexer {
         friend std::ostream& operator<<(std::ostream&, Lexer&);
 
         Token::Token GetNextToken();
+        void Reset(std::string = "");
         std::vector<Token::Token> Parse();
 
         static bool isLetter(char);
         static bool isNumber(char);
 
     protected:
-        void Reset();
         void SkipWhitespace();
         void ReadChar();
         char PeekChar();

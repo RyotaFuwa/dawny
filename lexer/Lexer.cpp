@@ -239,9 +239,12 @@ std::vector<Token::Token> Lexer::Lexer::Parse() {
     return tokens;
 }
 
-void Lexer::Lexer::Reset() {
+void Lexer::Lexer::Reset(std::string input) {
     position = 0;
     nextPosition = 1;
+    if(!input.empty()) {
+        codeText = input;
+    }
     if(!codeText.empty())
         c = codeText[0];
     else

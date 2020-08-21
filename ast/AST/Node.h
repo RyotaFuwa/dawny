@@ -6,10 +6,28 @@
 #define DAWNY_NODE_H
 #include <string>
 
+enum NodeType {
+    NONE,
+    //statement
+    LET,
+    ASSIGN,
+    RETURN,
+    IMPORT,
+
+    //expression
+    IF,
+    FOR,
+    WHILE,
+    FUNCTION,
+    CLASS,
+};
 
 struct Node {
+    Node() {};
+    virtual ~Node() {};
     // virtual std::string GetLiteral() = 0;
     virtual std::string ToString() const = 0;
+    NodeType type;
 };
 
 

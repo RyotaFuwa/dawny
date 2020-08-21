@@ -4,9 +4,7 @@
 
 #include "Statement.h"
 
-Statement::Statement() : empty(true) {
-}
-
 std::string Statement::ToString() const {
     return "";
 }
+

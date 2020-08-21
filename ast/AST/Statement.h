@@ -4,13 +4,14 @@
 
 #ifndef DAWNY_STATEMENT_H
 #define DAWNY_STATEMENT_H
+#include <map>
 #include "Node.h"
 
 
 struct Statement : Node {
-    Statement();
-    std::string ToString() const override;
-    bool empty;
+    Statement() {};
+    virtual ~Statement() {};
+    virtual std::string ToString() const override;
 };
 
 

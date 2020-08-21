@@ -7,6 +7,12 @@
 Program::Program() {
 }
 
+Program::~Program() {
+    for(auto statement: statements) {
+        delete statement;
+    }
+}
+
 /*
 std::string Program::GetLiteral() {
     return std::string();
@@ -15,8 +21,9 @@ std::string Program::GetLiteral() {
 
 std::string Program::ToString() const {
     std::string out = "";
-    for(const Statement& statement : statements) {
-        out += statement.ToString() + "\n";
+    for(const Statement* statement : statements) {
+        out += statement->ToString() + "\n";
     }
     return out;
 }
+

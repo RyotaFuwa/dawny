@@ -8,7 +8,10 @@
 #include "Node.h"
 
 
-class Expression : public Node {
+struct Expression : Node {
+    Expression();
+    virtual ~Expression();
+    virtual std::string ToString() const override;
 };
 
 

@@ -13,9 +13,10 @@
 struct Program : Node {
 public:
     Program();
+    ~Program() override;
 //    std::string GetLiteral() override;
     std::string ToString() const override;
-    std::vector<Statement> statements;
+    std::vector<const Statement*> statements;
 };
 
 

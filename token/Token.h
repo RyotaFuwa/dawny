@@ -64,7 +64,7 @@ namespace Token {
         RETURN,
     };
 
-    const std::map<TokenType, std::string> TYPESTRING{
+    const std::map<TokenType, std::string> TOKENTYPE_TO_STRING{
         {ILLEGAL, "ILLEGAL"},
         {EOF_, "EOF"},
         {IDENT, "IDENT"},
@@ -109,7 +109,7 @@ namespace Token {
         TokenType type;
         std::string literal;
         std::string ToString() const {
-            return "<" + TYPESTRING.at(type) + ", " + literal + '>';
+            return "<" + TOKENTYPE_TO_STRING.at(type) + ", " + literal + '>';
         }
     };
 
